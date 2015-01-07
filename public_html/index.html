@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<title>xdebug-trace-explorer</title>
+		<script src="//fb.me/react-0.12.2.js"></script>
+		<script src="//fb.me/JSXTransformer-0.12.2.js"></script>
+		<script src="//code.jquery.com/jquery-1.10.0.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/simplemodal/1.4.4/jquery.simplemodal.min.js"></script>
+		<script type="text/jsx" src="/ui/search.js"></script>
+		<script type="text/jsx" src="/ui/header.js"></script>
+		<script type="text/jsx" src="/ui/function.js"></script>
+		<link rel="stylesheet" type="text/css" href="/style.css">
+	</head>
+	<body>
+	<div id="content"></div>
+	<script type="text/jsx">
+		var Index = React.createClass({
+			render: function() {
+				return(
+					<div>
+						<Search />
+						<Header />
+						<div id="func">
+							<FunctionView />
+						</div>
+					</div>
+				);
+			}
+		});
+		React.render(
+			<Index />,
+			document.getElementById('content')
+		);
+	</script>
+	</body>
+</html>

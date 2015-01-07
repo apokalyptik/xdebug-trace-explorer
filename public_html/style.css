@@ -1,0 +1,87 @@
+div.child, div#funchead {
+	clear: both;
+	margin: 0.5em;
+	height: 2em;
+	background: #eee;
+	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	padding: 0.5em;
+}
+.fnhdeets {
+	font-size: 1.5em; font-weight: bold;
+}
+div#funchead {
+	margin-left: 0;
+	margin-right: 0;
+	background: #ddd;
+	border-right: 0;
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+}
+div.fnpre {
+	float: left;
+	margin-right: 0.5em;
+	width: 7em;
+}
+div.fndive {
+	position: absolute;
+	right: 1em;
+	font-size: 2em;
+	margin-top: -0.1em;
+}
+div.fnjump {
+	float: left;
+	margin-left: 0.10em;
+	margin-right: 0.25em;
+	font-size: 2em;
+	margin-top: -0.1em;
+}
+a {	
+	text-decoration: none;
+	color: blue;
+}
+div.fn {
+	float: left;
+}
+div.hidden, div.arg {
+	display: none;
+}
+
+.rawdata, .argdata {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.hot1 {}
+.hot2 { background: #fcc; }
+.hot3 { background: #faa; }
+.hot4 { background: #f88; }
+
+#basic-modal-content {display:none;}
+
+/* Overlay */
+#simplemodal-overlay {background-color:#000;}
+
+/* Container */
+#simplemodal-container {
+	height:360px; width:600px; color:#bbb; background-color:#333; border:4px solid #444; padding:12px;
+}
+#simplemodal-container .simplemodal-data {
+	padding:8px;
+}
+#simplemodal-container code {
+	background:#141414; border-left:3px solid #65B43D; color:#bbb; 
+	display:block; font-size:12px; margin-bottom:12px; padding:4px 6px 6px;
+}
+#simplemodal-container a {
+	color:#ddd;
+}
+#simplemodal-container a.modalCloseImg {
+	background:url(http://simplemodal.googlecode.com/svn/tags/1.3/test/img/x.png) no-repeat; 
+	width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; 
+	right:-16px; cursor:pointer;
+}
+#simplemodal-container h3 {
+	color:#84b8d9;
+}

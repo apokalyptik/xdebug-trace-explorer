@@ -3,10 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 	"time"
 
 	"github.com/briandowns/spinner"
@@ -20,11 +20,12 @@ var t = &trace{}
 func serve() {
 	http.HandleFunc("/api/info.json", info)
 	http.HandleFunc("/api/func.json", getfunc)
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		if b, e := ioutil.ReadFile("./index.html"); e == nil {
-			w.Write(b)
-		}
-	})
+	if webRoot, err := filepath.Abs("./public_html"); err != nil {
+		log.Fatal(err)
+	} else {
+		log.Printf("Serving %s", webRoot)
+		http.Handle("/", http.FileServer(http.Dir(webRoot)))
+	}
 	log.Fatal(http.ListenAndServe(listen, nil))
 }
 
