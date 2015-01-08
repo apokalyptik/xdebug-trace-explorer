@@ -12,12 +12,12 @@ func getfunc(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		fmt.Fprint(w, http.StatusText(http.StatusBadRequest))
 	} else {
-		w.Write(t.getFunc(n))
+		w.Write(t.ByID(n).GetJSON())
 	}
 }
 
 func info(w http.ResponseWriter, r *http.Request) {
-	bs := t.fi.Size()
+	bs := t.FileInfo.Size()
 	fs := float64(bs)
 	ss := ""
 	if bs > 1048576 {
@@ -29,7 +29,7 @@ func info(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Add("Content-Type", "text/json")
 	b, _ := json.Marshal(map[string]interface{}{
-		"filename": t.fi.Name(),
+		"filename": t.FileInfo.Name(),
 		"filesize": ss,
 	})
 	w.Write(b)

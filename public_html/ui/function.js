@@ -16,14 +16,14 @@ var FunctionView = React.createClass({
 			url: "/api/func.json?n=" + n,
 			dataType: 'json',
 			success: function(data) {
-				if ( data.data.child_count > 0 ) {
+				if ( data.child_count > 0 ) {
 					var maxt = 0
-					data.data.children.sort(function(a,b) {
+						data.children.sort(function(a,b) {
 						return a.id - b.id
 					})
 				}
 				window.location = "#n=" + n
-				this.setState(data);
+				this.setState({ data: data });
 			}.bind(this)
 		})
 	},
@@ -36,10 +36,10 @@ var FunctionView = React.createClass({
 			url: "/api/func.json?n=" + n,
 			dataType: 'json',
 			success: function(data) {
-				data.data.children.sort(function(a,b) {
+				data.children.sort(function(a,b) {
 					return a.id - b.id
 				})
-				this.setState(data);
+				this.setState({data: data});
 			}.bind(this)
 		})
 	},
@@ -81,16 +81,11 @@ var FunctionView = React.createClass({
 				return (<span>{text}</span>);
 			})
 			var MoreLink = ""
-			var MoreClick = function(event) {
-				this.switchFunc(c.id);
-				event.stopPropagation();
-			}.bind(this)
-
 			if ( c.child_count > 0 ) {
 				console.log(c)
 				MoreLink = ( 
 					<div className="fndive">
-						<a href={window.location.href} onClick={MoreClick}>&gt;&gt;</a>
+					<a href={window.location.pathname + "#n=" + c.id}>&gt;&gt;</a>
 					</div>
 				);
 			}
@@ -139,11 +134,7 @@ var FunctionView = React.createClass({
 		var ID = this.state.data.id
 		var PID = this.state.data.parent_id
 		if ( this.state.data.id != this.state.data.parent_id ) {
-			var BackClick = function(event) {
-				this.switchFunc(PID);
-				event.stopPropagation();
-			}.bind(this)
-			BackLink = (<div className="fnjump"><a href={window.location.href} onClick={BackClick}>&lt;&lt;</a></div>);
+			BackLink = (<div className="fnjump"><a href={window.location.pathname + "#n=" + PID}>&lt;&lt;</a></div>);
 		}
 		var locationInfo = ""
 		if ( 'undefined' != typeof this.state.data.location && this.state.data.location.line ) {
